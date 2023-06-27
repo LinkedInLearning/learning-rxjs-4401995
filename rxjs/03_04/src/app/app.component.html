@@ -1,0 +1,40 @@
+<div class="container">
+  <mat-card class="weather-content">
+    <mat-form-field class="weather-form">
+      <mat-label>Input Temperature</mat-label>
+      <input
+        matInput
+        type="text"
+        (change)="setInputTemperature($event)"
+        type="number"
+      />
+    </mat-form-field>
+    <div *ngIf="!temperatureDataList.length">
+      <button
+        mat-raised-button
+        color="primary"
+        class="temperature-button"
+        (click)="setTemperature()"
+      >
+        Add Fahrenheit Temperature
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        class="temperature-button"
+        (click)="displayValues()"
+      >
+        Display Values
+      </button>
+    </div>
+  </mat-card>
+
+  <mat-card class="weather-content">
+    <mat-card-title class="weather-header">
+      <span *ngIf="!temperatureDataList.length">No Values Listed</span>
+      <span *ngIf="temperatureDataList.length">Temperature Values</span>
+
+      <li *ngFor="let temp of temperatureDataList">{{ temp }} F</li>
+    </mat-card-title>
+  </mat-card>
+</div>

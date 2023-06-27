@@ -1,0 +1,46 @@
+<div class="container">
+  <div>
+    <mat-card class="weather-content">
+      <button
+        mat-raised-button
+        color="primary"
+        class="temperature-button"
+        (click)="getWeather('seattle')"
+      >
+        Get Seattle Weather
+      </button>
+    </mat-card>
+    <mat-card class="weather-content">
+      <button
+        mat-raised-button
+        color="primary"
+        class="temperature-button"
+        (click)="getWeather('los angeles')"
+      >
+        Get Los Angeles Weather
+      </button>
+    </mat-card>
+    <mat-card class="weather-content">
+      <button
+        mat-raised-button
+        color="primary"
+        class="temperature-button"
+        (click)="getWeather('new york city')"
+      >
+        Get New York City Weather
+      </button>
+    </mat-card>
+  </div>
+  <mat-card class="weather-content">
+    <mat-card-title class="blue-weather-data">
+      <mat-card-title>
+        <span>Display Weather Data</span>
+      </mat-card-title>
+    </mat-card-title>
+    <mat-card-title class="weather-data" *ngFor="let weather of displayWeather">
+      <span>City: {{ weather.city }}</span>
+      <span>Temperature: {{ weather.temperature }} F</span>
+      <span>Humidity: {{ weather.humidity }}</span>
+    </mat-card-title>
+  </mat-card>
+</div>

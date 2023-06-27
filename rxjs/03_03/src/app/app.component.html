@@ -1,0 +1,14 @@
+<div class="container">
+  <mat-card class="card-container">
+    <first-page *ngIf="displayFirstPage"></first-page>
+    <second-page *ngIf="!displayFirstPage"></second-page>
+    <button
+      mat-raised-button
+      color="primary"
+      class="toggle-button"
+      (click)="togglePages()"
+    >
+      Toggle Components
+    </button>
+  </mat-card>
+</div>

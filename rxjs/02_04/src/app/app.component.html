@@ -1,0 +1,47 @@
+<div class="container">
+  <mat-card class="weather-content">
+    <mat-form-field class="weather-form">
+      <mat-label>Input Temperature</mat-label>
+      <input
+        matInput
+        type="text"
+        (change)="setInputTemperature($event)"
+        type="number"
+      />
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      class="temperature-button"
+      (click)="setTemperature()"
+    >
+      Set Fahrenheit Temperature
+    </button>
+  </mat-card>
+
+  <mat-card class="weather-content">
+    <mat-card-title class="weather-header"
+      ><span
+        >Current Temperature: {{ displayTemperatureText }}</span
+      ></mat-card-title
+    >
+    <button
+      *ngIf="isTouched && !isCelsius"
+      mat-raised-button
+      color="primary"
+      (click)="convertToCelsius()"
+      class="temperature-button"
+    >
+      Convert To Celsius
+    </button>
+    <button
+      *ngIf="isTouched && isCelsius"
+      mat-raised-button
+      color="primary"
+      (click)="convertToFahrenheit()"
+      class="temperature-button"
+    >
+      Convert To Fahrenheit
+    </button>
+  </mat-card>
+</div>

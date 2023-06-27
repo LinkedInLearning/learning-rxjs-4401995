@@ -1,0 +1,27 @@
+<div class="container">
+  <mat-card class="weather-content">
+    <button
+      mat-raised-button
+      color="primary"
+      class="temperature-button"
+      (click)="getWeather()"
+    >
+      Get Weather
+    </button>
+  </mat-card>
+
+  <mat-card class="weather-content">
+    <mat-card-title class="blue-weather-data">
+      <span>Click Call Count: {{ attemptedCallCount }}</span>
+    </mat-card-title>
+    <mat-card-title class="weather-data">
+      <mat-card-title>
+        <span>Completed Call Count: {{ callCount }}</span>
+      </mat-card-title>
+    </mat-card-title>
+    <mat-card-title class="weather-data" *ngIf="temperatureDataList.length">
+      <span>Replayed Subscription Values</span>
+      <li *ngFor="let temp of temperatureDataList">{{ temp }} F</li>
+    </mat-card-title>
+  </mat-card>
+</div>
