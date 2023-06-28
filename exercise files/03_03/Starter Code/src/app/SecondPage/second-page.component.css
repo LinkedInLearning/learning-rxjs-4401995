@@ -1,0 +1,13 @@
+.card-container {
+  width: 400px;
+  padding: 10px;
+}
+
+.title-label {
+  border-radius: 4px;
+  color: white;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: cornflowerblue;
+}

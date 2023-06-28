@@ -1,0 +1,10 @@
+<div class="container">
+  <mat-card class="weather-content" *ngFor="let weather of displayWeather">
+    <mat-card-title class="weather-header-blue">
+      Day: {{ weather.day }}</mat-card-title
+    >
+    <mat-card-title class="weather-header-pink">
+      Temperature: {{ weather.temperature }} F</mat-card-title
+    >
+  </mat-card>
+</div>

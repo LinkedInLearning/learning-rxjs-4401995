@@ -1,0 +1,30 @@
+<div class="container">
+  <mat-card class="weather-content">
+    <mat-card-header class="weather-header">
+      <mat-card-title
+        >Current Temperature: ° F</mat-card-title
+      >
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <img [src]="imageSrc" class="weather-icon" />
+    <mat-card-actions class="weather-content">
+      <mat-form-field class="weather-form">
+        <mat-label>Input Temperature</mat-label>
+        <input
+          matInput
+          type="text"
+          (change)="setInputTemperature($event)"
+          type="number"
+        />
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        class="temperature-button"
+        (click)="setTemperature()"
+      >
+        Set Temperature
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
