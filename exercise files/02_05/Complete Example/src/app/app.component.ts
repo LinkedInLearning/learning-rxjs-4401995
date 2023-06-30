@@ -1,25 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 
-const SNOWMAN_IMAGE = '..\\assets\\icons\\snowman image.jpg';
-const SUN_IMAGE = '..\\assets\\icons\\sun.jpg';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  temperatureDataList: number[] = [];
   inputTemperature = 0;
-  imageSrc = SUN_IMAGE;
+  displayTemperatureText = '';
+  isCelsius = false;
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   setTemperature() {
+    const temperature = this.inputTemperature;
   }
 
   setInputTemperature(event: Event) {
     const input = (event.target as HTMLInputElement).value;
     this.inputTemperature = parseInt(input);
+  }
+
+  addSubscription() {
+    this.temperatureDataList = [];
+  }
+  
+  removeSubscription() {
+    this.temperatureDataList = [];
   }
 }

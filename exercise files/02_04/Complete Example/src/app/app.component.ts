@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,15 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  temperatureDataList: number[] = [];
+  temperatureSubject$ = new Subject<number>();
   inputTemperature = 0;
   displayTemperatureText = '';
   isCelsius = false;
+  isTouched = false;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.temperatureSubject$.subscribe((temperature) => {
+      if (this.isCelsius) {
+        this.displayTemperatureText = temperature + '° C';
+      } else {
+        this.displayTemperatureText = temperature + '° F';
+      }
+      this.inputTemperature = temperature;
+      this.isTouched = true;
+    });
+  }
 
   setTemperature() {
     const temperature = this.inputTemperature;
+    this.temperatureSubject$.next(temperature);
   }
 
   setInputTemperature(event: Event) {
@@ -22,11 +35,15 @@ export class AppComponent implements OnInit {
     this.inputTemperature = parseInt(input);
   }
 
-  addSubscription() {
-    this.temperatureDataList = [];
+  convertToCelsius() {
+    this.isCelsius = true;
+    const celsiusTemperature = ((this.inputTemperature - 32) * 5) / 9;
+    this.temperatureSubject$.next(celsiusTemperature);
   }
-  
-  removeSubscription() {
-    this.temperatureDataList = [];
+
+  convertToFahrenheit() {
+    this.isCelsius = false;
+    const celsiusTemperature = (this.inputTemperature * 9) / 5 + 32;
+    this.temperatureSubject$.next(celsiusTemperature);
   }
 }

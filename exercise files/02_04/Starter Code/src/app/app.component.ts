@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ReplaySubject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,18 +6,17 @@ import { ReplaySubject, Subscription } from 'rxjs';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  temperatureSubject$ = new ReplaySubject<number>();
-  replaySubscription: Subscription | undefined;
-  temperatureDataList: number[] = [];
   inputTemperature = 0;
   displayTemperatureText = '';
   isCelsius = false;
+  isTouched = false;
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
   setTemperature() {
     const temperature = this.inputTemperature;
-    this.temperatureSubject$.next(temperature);
   }
 
   setInputTemperature(event: Event) {
@@ -26,19 +24,13 @@ export class AppComponent implements OnInit {
     this.inputTemperature = parseInt(input);
   }
 
-  addSubscription() {
-    if (this.replaySubscription) {
-      return;
-    }
-
-    this.temperatureDataList = [];
-    this.replaySubscription = this.temperatureSubject$.subscribe(
-      (temperature) => this.temperatureDataList.push(temperature)
-    );
+  convertToCelsius() {
+    this.isCelsius = true;
+    const celsiusTemperature = ((this.inputTemperature - 32) * 5) / 9;
   }
-  removeSubscription() {
-    this.temperatureDataList = [];
-    this.replaySubscription?.unsubscribe();
-    this.replaySubscription = undefined;
+
+  convertToFahrenheit() {
+    this.isCelsius = false;
+    const celsiusTemperature = (this.inputTemperature * 9) / 5 + 32;
   }
 }

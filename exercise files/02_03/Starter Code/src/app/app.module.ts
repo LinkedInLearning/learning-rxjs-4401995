@@ -6,7 +6,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { AppComponent } from './app.component';
 
@@ -20,7 +19,6 @@ import { AppComponent } from './app.component';
     MatCardModule,
     MatDividerModule,
     NoopAnimationsModule,
-    MatSlideToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

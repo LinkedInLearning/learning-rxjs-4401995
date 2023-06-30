@@ -9,11 +9,6 @@
 .weather-content {
   display: flex;
   flex-direction: column;
-  width: 400px;
-  height: 200px;
-  padding: 10px;
-  justify-content: space-around;
-  align-items: center;
 }
 
 .weather-form {
@@ -21,13 +16,11 @@
 }
 
 .weather-header {
-  border-radius: 4px;
-  color: white;
-  text-align: center;
-  width: 100%;
-  padding-top: 10px;
+  display: flex;
+  justify-content: space-around;
   padding-bottom: 10px;
-  background-color: hotpink;
+  color: white;
+  background-color: cadetblue;
 }
 
 .temperature-button {
@@ -38,14 +31,4 @@
 .weather-icon {
   width: 400px;
   height: 400px;
-}
-
-.weather-toggle {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
-  width: 200px;
 }

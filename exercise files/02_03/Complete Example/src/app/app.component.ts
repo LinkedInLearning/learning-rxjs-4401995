@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+
+const SNOWMAN_IMAGE = '..\\assets\\icons\\snowman image.jpg';
+const SUN_IMAGE = '..\\assets\\icons\\sun.jpg';
 
 @Component({
   selector: 'app-root',
@@ -7,21 +10,17 @@ import { Subject } from 'rxjs';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  temperatureSubject$ = new Subject<number>();
+  temperatureSubject$ = new BehaviorSubject<number>(72);
   inputTemperature = 0;
-  displayTemperatureText = '';
-  isCelsius = false;
-  isTouched = false;
+  imageSrc = SUN_IMAGE;
 
   ngOnInit() {
     this.temperatureSubject$.subscribe((temperature) => {
-      if (this.isCelsius) {
-        this.displayTemperatureText = temperature + '° C';
+      if (temperature >= 40) {
+        this.imageSrc = SUN_IMAGE;
       } else {
-        this.displayTemperatureText = temperature + '° F';
+        this.imageSrc = SNOWMAN_IMAGE;
       }
-      this.inputTemperature = temperature;
-      this.isTouched = true;
     });
   }
 
@@ -33,17 +32,5 @@ export class AppComponent implements OnInit {
   setInputTemperature(event: Event) {
     const input = (event.target as HTMLInputElement).value;
     this.inputTemperature = parseInt(input);
-  }
-
-  convertToCelsius() {
-    this.isCelsius = true;
-    const celsiusTemperature = ((this.inputTemperature - 32) * 5) / 9;
-    this.temperatureSubject$.next(celsiusTemperature);
-  }
-
-  convertToFahrenheit() {
-    this.isCelsius = false;
-    const celsiusTemperature = (this.inputTemperature * 9) / 5 + 32;
-    this.temperatureSubject$.next(celsiusTemperature);
   }
 }

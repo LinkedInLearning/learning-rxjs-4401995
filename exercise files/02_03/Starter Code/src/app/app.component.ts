@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+const SNOWMAN_IMAGE = '..\\assets\\icons\\snowman image.jpg';
+const SUN_IMAGE = '..\\assets\\icons\\sun.jpg';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,30 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   inputTemperature = 0;
-  displayTemperatureText = '';
-  isCelsius = false;
-  isTouched = false;
+  imageSrc = SUN_IMAGE;
 
   ngOnInit() {
-
   }
 
   setTemperature() {
-    const temperature = this.inputTemperature;
   }
 
   setInputTemperature(event: Event) {
     const input = (event.target as HTMLInputElement).value;
     this.inputTemperature = parseInt(input);
-  }
-
-  convertToCelsius() {
-    this.isCelsius = true;
-    const celsiusTemperature = ((this.inputTemperature - 32) * 5) / 9;
-  }
-
-  convertToFahrenheit() {
-    this.isCelsius = false;
-    const celsiusTemperature = (this.inputTemperature * 9) / 5 + 32;
   }
 }
