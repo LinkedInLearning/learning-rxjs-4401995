@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subject, of } from 'rxjs';
-import { mergeMap, delay } from 'rxjs/operators';
+import { Observable, of, Subject } from 'rxjs';
+import { switchMap, delay } from 'rxjs/operators';
 
 interface Weather {
   city: string;
@@ -18,16 +18,11 @@ export class AppComponent implements OnInit {
   displayWeather: Weather[] = [];
 
   ngOnInit() {
-    this.citySubject$
-      .pipe(
-        mergeMap((city: string) => {
-          return this.getWeather(city).pipe(delay(1000));
-        })
-      )
-      .subscribe((weather) => {
-        console.log(weather);
-        this.displayWeather.push(weather);
-      });
+    this.citySubject$.pipe(switchMap((city) => {
+      return this.getWeather(city).pipe(delay(1000));
+    })).subscribe(weather => {
+      this.displayWeather.push(weather);
+    })
   }
 
   submitCity(city: string) {
@@ -52,7 +47,6 @@ export class AppComponent implements OnInit {
         humidity: 41,
       },
     };
-
     return of(weatherDataMap[city]);
   }
 }

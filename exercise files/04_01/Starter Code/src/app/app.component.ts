@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
     const input = (event.target as HTMLInputElement).value;
     this.inputTemperature = parseInt(input);
   }
+
   setFeelsLike() {
   }
 

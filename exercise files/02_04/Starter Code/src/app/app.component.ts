@@ -7,16 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   inputTemperature = 0;
+  originalTemperature = 0;
   displayTemperatureText = '';
   isCelsius = false;
-  isTouched = false;
 
   ngOnInit() {
-
   }
 
   setTemperature() {
-    const temperature = this.inputTemperature;
+    this.originalTemperature = this.inputTemperature;
+    this.isCelsius = false;
   }
 
   setInputTemperature(event: Event) {
@@ -31,6 +31,6 @@ export class AppComponent implements OnInit {
 
   convertToFahrenheit() {
     this.isCelsius = false;
-    const celsiusTemperature = (this.inputTemperature * 9) / 5 + 32;
+    const fahrenheitTemperature = (this.inputTemperature * 9) / 5 + 32;
   }
 }

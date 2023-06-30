@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, ReplaySubject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
 interface Weather {
@@ -13,9 +13,9 @@ interface Weather {
   styleUrls: ['./first-page.component.css'],
 })
 export class FirstPageComponent implements OnInit, OnDestroy {
-  temperatureSubject$ = new Subject<Weather>();
   displayWeather: Weather[] = [];
-  private destroyComponent$ = new ReplaySubject<void>(0);
+  weatherSubject$ = new Subject<Weather>();
+  destroySubject$ = new Subject<void>();
 
   private weatherData = [
     {
@@ -49,24 +49,21 @@ export class FirstPageComponent implements OnInit, OnDestroy {
   ];
 
   ngOnInit() {
-    this.temperatureSubject$
-      .pipe(
-        takeUntil(this.destroyComponent$),
-        filter((weather) => {
-          return weather.temperature >= 70;
-        })
-      )
-      .subscribe((weather) => {
+    this.weatherSubject$.pipe(takeUntil(this.destroySubject$),
+      filter((weather) => {
+        return weather.temperature >= 70;
+      })).subscribe((weather) => {
         this.displayWeather.push(weather);
       });
+
     for (const weather of this.weatherData) {
-      this.temperatureSubject$.next(weather);
+      this.weatherSubject$.next(weather);
     }
   }
 
   ngOnDestroy() {
-    this.destroyComponent$.next();
-    this.destroyComponent$.complete();
-    console.log('Component Destroyed');
+    this.destroySubject$.next();
+    this.destroySubject$.complete();
+    console.log("Component Destroyed!");
   }
 }

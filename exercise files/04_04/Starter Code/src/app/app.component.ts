@@ -40,6 +40,6 @@ export class AppComponent implements OnInit {
       },
     };
 
-    return of();
+    return of(weatherDataMap[city]);
   }
 }

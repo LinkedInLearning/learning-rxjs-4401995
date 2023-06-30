@@ -16,16 +16,12 @@ export class AppComponent implements OnInit {
   attemptedCallCount = 0;
 
   ngOnInit() {
-    this.temperatureSubject$
-      .pipe(
-        exhaustMap((temperatureDataList: number[]) => {
-          return from(temperatureDataList).pipe(delay(1000), toArray());
-        })
-      )
-      .subscribe((temperatureDataList) => {
-        this.callCount = this.callCount + 1;
-        this.temperatureDataList = temperatureDataList;
-      });
+    this.temperatureSubject$.pipe(exhaustMap((temperatureDataList) => {
+      return from(temperatureDataList).pipe(delay(1000), toArray());
+    })).subscribe((temperatureDataList) => {
+      this.temperatureDataList = temperatureDataList;
+      this.callCount = this.callCount + 1;
+    })
   }
 
   getWeather() {

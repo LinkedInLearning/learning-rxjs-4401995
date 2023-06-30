@@ -10,9 +10,9 @@ const SUN_IMAGE = '..\\assets\\icons\\sun.jpg';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  temperatureSubject$ = new BehaviorSubject<number>(72);
   inputTemperature = 0;
   imageSrc = SUN_IMAGE;
+  temperatureSubject$ = new BehaviorSubject<number>(72);
 
   ngOnInit() {
     this.temperatureSubject$.subscribe((temperature) => {
@@ -25,8 +25,7 @@ export class AppComponent implements OnInit {
   }
 
   setTemperature() {
-    const temperature = this.inputTemperature;
-    this.temperatureSubject$.next(temperature);
+    this.temperatureSubject$.next(this.inputTemperature);
   }
 
   setInputTemperature(event: Event) {

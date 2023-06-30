@@ -13,9 +13,9 @@ interface Weather {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  temperatureSubject$ = new Subject<Weather>();
   inputTemperature = 0;
   weatherOutput: Weather | undefined;
+  weatherSubject$ = new Subject<Weather>();
 
   selectedDay = 'Monday';
 
@@ -30,29 +30,25 @@ export class AppComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.temperatureSubject$
-      .pipe(
-        map((weather) => {
-          return {
-            temperature: Math.floor(weather.temperature),
-            day: weather.day,
-          };
-        })
-      )
-      .subscribe((weather) => {
-        this.weatherOutput = weather;
-      });
+    this.weatherSubject$.pipe(map((weather) => {
+      return {
+        temperature: Math.ceil(weather.temperature),
+        day: weather.day
+      }
+    })).subscribe((weather) => {
+      this.weatherOutput = weather;
+    });
   }
 
   setTemperature() {
-    this.temperatureSubject$.next({
+    this.weatherSubject$.next({
       temperature: this.inputTemperature,
-      day: this.selectedDay,
-    });
+      day: this.selectedDay
+    })
   }
 
   setInputTemperature(event: Event) {
     const input = (event.target as HTMLInputElement).value;
-    this.inputTemperature = parseInt(input);
+    this.inputTemperature = Number(input);
   }
 }

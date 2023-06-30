@@ -13,8 +13,8 @@ interface Weather {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  temperatureSubject$ = new Subject<Weather>();
   displayWeather: Weather[] = [];
+  weatherSubject = new Subject<Weather>();
 
   private weatherData = [
     {
@@ -48,20 +48,16 @@ export class AppComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.temperatureSubject$
-      .pipe(
-        filter((weather) => {
-          return weather.temperature >= 77;
-        })
-      )
-      .subscribe((weather) => {
-        this.displayWeather.push(weather);
-      });
+    this.weatherSubject.pipe(filter(weather => {
+      return weather.temperature >= 77;
+    })).subscribe(weather => {
+      this.displayWeather.push(weather);
+    });
   }
 
   getWeatherData() {
     for (const weather of this.weatherData) {
-      this.temperatureSubject$.next(weather);
+      this.weatherSubject.next(weather);
     }
   }
 }

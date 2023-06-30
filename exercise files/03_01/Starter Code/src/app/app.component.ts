@@ -26,12 +26,12 @@ export class AppComponent implements OnInit {
     'Sunday',
   ];
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  setTemperature() {}
+  setTemperature() { }
 
   setInputTemperature(event: Event) {
     const input = (event.target as HTMLInputElement).value;
-    this.inputTemperature = parseInt(input);
+    this.inputTemperature = Number(input);
   }
 }
