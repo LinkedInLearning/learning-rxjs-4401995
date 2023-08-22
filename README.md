@@ -1,34 +1,19 @@
-# Learning RxJS 
+# Learning RxJS
 This is the repository for the LinkedIn Learning course Learning RxJS. The full course is available from [LinkedIn Learning][lil-course-url].
 
-_See the readme file in the main branch for updated instructions and information._
-## Instructions
-This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
+![Learning RxJS][lil-thumbnail-url] 
 
-## Branches
-The branches are structured to correspond to the videos in the course. The naming convention is `CHAPTER#_MOVIE#`. As an example, the branch named `02_03` corresponds to the second chapter and the third video in that chapter. 
-Some branches will have a beginning and an end state. These are marked with the letters `b` for "beginning" and `e` for "end". The `b` branch contains the code as it is at the beginning of the movie. The `e` branch contains the code as it is at the end of the movie. The `main` branch holds the final state of the code when in the course.
+Imagine that you’re working on an Angular application and need to call an API for a to-do list, shopping cart, or weather app data. Whatever the number of APIs you’re using, you need a way to manage them. RxJS can help. When you learn RxJS, you’ll be working with an industry standard library that seamlessly works with any Angular application to manage APIs and data. In this course, front-end software engineer Alex Nguyen gives you an introduction to RxJS that will get you started on building Angular applications that scale to handle data from anywhere. Learn key RxJS concepts, including exactly what an observable is. Find out how to use RxJS to create and subscribe to observables and leverage subjects—a specialized type of observable—for fine-grained control. Plus, explore ways to use RxJS with multiple observables.
 
-When switching from one exercise files branch to the next after making changes to the files, you may get a message like this:
+### Instructor
 
-    error: Your local changes to the following files would be overwritten by checkout:        [files]
-    Please commit your changes or stash them before you switch branches.
-    Aborting
-
-To resolve this issue:
-	
-    Add changes to git using this command: git add .
-	Commit changes using this command: git commit -m "some message"
-
-## Installing
-1. To use these exercise files, you must have the following installed:
-	- [list of requirements for course]
-2. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
-3. [Course-specific instructions]
+Alexander Nguyen 
+                            
 
 
-[0]: # (Replace these placeholder URLs with actual course URLs)
+                            
 
-[lil-course-url]: https://www.linkedin.com/learning/
-[lil-thumbnail-url]: http://
+Check out my other courses on [LinkedIn Learning](https://www.linkedin.com/learning/instructors/alexander-nguyen).
 
+[lil-course-url]: https://www.linkedin.com/learning/learning-rxjs-22802739?dApp=59033956&leis=LAA
+[lil-thumbnail-url]: https://media.licdn.com/dms/image/D560DAQGIVtKNV6y6SA/learning-public-crop_675_1200/0/1692385679893?e=2147483647&v=beta&t=Z-m1TSnZn2SW1TOZQb60Al4pAIyxpEP_u0LcqKVdEYE
