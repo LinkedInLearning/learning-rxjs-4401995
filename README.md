@@ -16,4 +16,4 @@ Alexander Nguyen
 Check out my other courses on [LinkedIn Learning](https://www.linkedin.com/learning/instructors/alexander-nguyen).
 
 [lil-course-url]: https://www.linkedin.com/learning/learning-rxjs-22802739?dApp=59033956&leis=LAA
-[lil-thumbnail-url]: https://media.licdn.com/dms/image/D560DAQGIVtKNV6y6SA/learning-public-crop_675_1200/0/1692385679893?e=2147483647&v=beta&t=Z-m1TSnZn2SW1TOZQb60Al4pAIyxpEP_u0LcqKVdEYE
+[lil-thumbnail-url]: https://media.licdn.com/dms/image/D4E0DAQFTljDrXqHkKQ/learning-public-crop_675_1200/0/1693329396501?e=2147483647&v=beta&t=6zJh0XzsdDaXoFOW1uzFL_WczT0QmxOmwfUt_MA2tCk
